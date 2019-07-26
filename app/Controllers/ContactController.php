@@ -118,4 +118,8 @@ class ContactController extends MainController implements ControllerInterface
             ];
         }
     }
+
+    public function create() {
+        
+    }
 }
