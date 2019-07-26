@@ -17,8 +17,12 @@ class ContactController extends MainController implements ControllerInterface
     public function __construct()
     {
         parent::__construct();
-
-        $this->userId = $_SESSION['auth']['id'];
+        if(isset($_SESSION['auth'])){
+            $this->userId = $_SESSION['auth']['id'];
+        } else {
+            header('Location: /index.php?p=user.login');
+        }
+        
     }
 
     /**
