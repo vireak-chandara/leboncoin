@@ -22,6 +22,8 @@ class ContactController extends MainController implements ControllerInterface
         } else {
             header('Location: /index.php?p=user.login');
         }
+
+        $this->loadModel('Contact');
         
     }
 
@@ -120,6 +122,6 @@ class ContactController extends MainController implements ControllerInterface
     }
 
     public function create() {
-        
+
     }
 }
