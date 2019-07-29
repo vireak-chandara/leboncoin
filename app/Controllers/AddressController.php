@@ -127,7 +127,7 @@ class AddressController extends MainController implements ControllerInterface
     {
         $result = $this->Addresse->delete($_GET['id']);
         if ($result) {
-            header('Location: /index.php?p=address.index');
+            header('Location: index.php?p=address.index&id='.$_GET['id']);
         }
     }
 

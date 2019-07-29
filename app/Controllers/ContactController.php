@@ -105,7 +105,7 @@ class ContactController extends MainController implements ControllerInterface
     {
         $result = $this->Contact->delete($_GET['id']);
         if ($result) {
-            header('Location: /index.php?p=contact.index');
+            header('Location: index.php?p=contact.index');
         }
     }
 
