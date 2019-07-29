@@ -131,8 +131,8 @@ class ContactController extends MainController implements ControllerInterface
             throw new InvalidArgumentException('Le format de l\'email est invalide');
         }
 
-        $prenom = strtoupper($data['prenom']);
-        $nom    = strtoupper($data['nom']);
+        $prenom = ucfirst(strtolower($data['prenom']));
+        $nom = ucfirst(strtolower($data['nom']));
         $email  = strtolower($data['email']);
 
         $isPalindrome = $this->apiClient('palindrome', ['name' => $nom]);

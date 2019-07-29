@@ -18,7 +18,7 @@ class Api extends ApiService
         // $palindrome->setName($name);
 
         if ($name) {
-            if (strrev(strtolower($name)) == $name) {
+            if (ucfirst(strrev(strtolower($name))) == $name) {
                 $this->response($this->json(["response" => true]), 200);
             } else {
                 $this->response($this->json(["response" => false]), 200);
@@ -62,7 +62,6 @@ class Api extends ApiService
         if (is_array($data)) {
             return json_encode($data);
         }
-
     }
 }
 
