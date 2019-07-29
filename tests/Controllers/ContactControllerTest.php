@@ -1,17 +1,15 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use App\Controllers\ContactController;
 
-
-final class ContactTest extends TestCase
+final class ContactControllerTest extends TestCase
 {
-    private $contact;
+    protected $contact;
     private $data;
 
     protected function setUp()
     {
-        $this->contact = new ContactController;
+        $this->contact = new App\Controllers\ContactController;
         $this->data = [
             'nom' => 'chandara',
             'prenom' => 'vireak',
