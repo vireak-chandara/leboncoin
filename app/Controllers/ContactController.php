@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\ControllerInterface;
 use InvalidArgumentException;
 use Exception;
 
