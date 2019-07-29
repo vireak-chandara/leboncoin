@@ -34,3 +34,18 @@ composer install
   </Directory>
 </VirtualHost>
 ```
+#### Wamp : Importer la base de données dans une base de données appelée crm à partir du fichier upgrade.sql ou modifier le fichier app/Config.php
+```
+    /**
+     * Config constructor.
+     */
+    public function __construct()
+    {
+        $this->settings = [
+            "db_user" => "root",
+            "db_pass" => "",
+            "db_host" => "localhost",
+            "db_name" => "crm" 
+        ];
+    }
+```
