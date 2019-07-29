@@ -57,7 +57,7 @@ class AddressController extends MainController implements ControllerInterface
                 ]);
 
                 if ($result) {
-                    header("Location: /index.php?p=address.index&id=$idContact");
+                    header("Location: index.php?p=address.index&id=$idContact");
                 } else {
                     $error = true;
                     $this->twig->render('addressadd.html.twig',
@@ -96,7 +96,7 @@ class AddressController extends MainController implements ControllerInterface
                         'street'     => $response['street'],
                     ]);
                 if ($result) {
-                    header("Location: /index.php?p=address.index&id=$addresse->idContact");
+                    header("Location: index.php?p=address.index&id=$addresse->idContact");
                 } else {
                     $error = true;
                     $this->twig->render('addressadd.html.twig',
@@ -125,7 +125,10 @@ class AddressController extends MainController implements ControllerInterface
      */
     public function delete()
     {
-       //@todo
+        $result = $this->Addresse->delete($_GET['id']);
+        if ($result) {
+            header('Location: /index.php?p=address.index');
+        }
     }
 
 
@@ -136,12 +139,13 @@ class AddressController extends MainController implements ControllerInterface
      *
      * @return array
      */
-    public function sanitize($data = [])
+    public function sanitize(array $data = []): array
     {
         $number     = $_POST['number'];
         $city       = strtoupper($_POST['city']);
         $country    = strtoupper($_POST['country']);
         $street     = strtoupper($_POST['street']);
+        $postalCode = intval($_POST['postalCode']);
         $idContact  = intval($_POST['idContact']);
 
         if ($number && $city && $country && $postalCode && $street
@@ -159,5 +163,9 @@ class AddressController extends MainController implements ControllerInterface
         } else {
             return ['response' => false];
         }
+    }
+
+    public function create() {
+
     }
 }
