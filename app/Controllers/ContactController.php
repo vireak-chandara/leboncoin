@@ -55,7 +55,7 @@ class ContactController extends MainController implements ControllerInterface
                     'userId' => $this->userId
                 ]);
                 if ($result) {
-                    header('Location: /index.php?p=contact.index');
+                    header('Location: index.php?p=contact.index');
                 }
             } else {
                 $error = true;
@@ -91,17 +91,17 @@ class ContactController extends MainController implements ControllerInterface
      */
     public function sanitize(array $data = []): array
     {
-        if (empty($nom)) {
+        if (empty($data['nom'])) {
             throw new Exception('Le nom est obligatoire');
         }
 
-        if (empty($prenom)) {
+        if (empty($data['prenom'])) {
             throw new Exception('Le prenom est obligatoire');
         }
 
-        if (empty($email)) {
+        if (empty($data['email'])) {
             throw new Exception('Le email est obligatoire');
-        } elseif (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        } elseif (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException('Le format de l\'email est invalide');
         }
 
