@@ -83,7 +83,7 @@ class ContactController extends MainController implements ControllerInterface
                     header("Location: index.php?p=contact.index");
                 } else {
                     $error = true;
-                    $this->twig->render('edit.html.twig',
+                    $this->twig->render('add.html.twig',
                         ["idContact" => $idContact,'error' => $error]);
                 }
             } else {
