@@ -69,7 +69,33 @@ class ContactController extends MainController implements ControllerInterface
      */
     public function edit()
     {
-        //@todo
+        $idContact = intval($_GET['id']);
+        if (!empty($_POST)) {
+            $response = $this->sanitize($_POST);
+            if ($response["response"]) {
+                $result = $this->Contact->update($idContact,
+                    [
+                        'nom'    => $response['nom'],
+                        'prenom' => $response['prenom'],
+                        'email'  => $response['email']
+                    ]);
+                if ($result) {
+                    header("Location: index.php?p=contact.index");
+                } else {
+                    $error = true;
+                    $this->twig->render('edit.html.twig',
+                        ["idContact" => $idContact,'error' => $error]);
+                }
+            } else {
+                $error = true;
+                $this->twig->render('add.html.twig', ['error' => $error]);
+            }
+        }
+        $data = $this->Contact->findById($idContact);
+        echo $this->twig->render('add.html.twig',
+            [
+                'data'      => $data
+            ]);
     }
 
     /**
